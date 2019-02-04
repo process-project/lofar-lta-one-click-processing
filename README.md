@@ -32,8 +32,6 @@ Now you can view observations from the [LOFAR LTA](lta.lofar.eu) by entering
 ```localhost:2015```
 in your browser.
 
-One row is one observation.
-
 Select an observation by clicking on it. One row is one observation.
 
-A web form pops up. You can start processing (initial calibration) of an observation by clicking on "Submit workflow" at the bottom of the web form. First enter your email adress and a job name. You can proceed processing with default or modified parameters.
+A web form pops up. You can start processing (initial calibration) of an observation by clicking on "Submit workflow" at the bottom of the web form. First enter your email adress and a job description. You can proceed processing with default or modified parameters.
