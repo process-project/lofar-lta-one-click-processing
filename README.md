@@ -36,5 +36,5 @@ Select an observation by clicking on it. One row is one observation.
 
 A web form pops up. You can start processing (initial calibration) of an observation by clicking on "Submit workflow" at the bottom of the web form. First enter your email adress and a job description. You can proceed processing with default or modified parameters.
 
-Notice that staging of observations is not included here. Therefore, processing (initial calibration) by clicking on "Submit workflow" will time out and nothing will happen unless you have staged the observation. You can stage an observation by visiting lta.lofar.eu or by using a [Python script](https://www.astron.nl/lofarwiki/doku.php?id=public:lta_tricks&s%5B%5D=staging&s%5B%5D=api).
+Notice that staging of observations is not included here. Therefore, processing (initial calibration) by clicking on "Submit workflow" will time out and nothing will happen unless you have staged the observation. You can stage an observation by visiting the [LOFAR LTA website](lta.lofar.eu) or by using a [Python script](https://www.astron.nl/lofarwiki/doku.php?id=public:lta_tricks&s%5B%5D=staging&s%5B%5D=api).
 So you can 
