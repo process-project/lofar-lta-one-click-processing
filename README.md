@@ -20,7 +20,7 @@ You can run the docker image, once you got the config.ini (not provided here for
 
 `docker run -d -p 2015:2015 -v $PWD/config.ini:/home/config/config.ini -v $PWD/db-config.js:/home/ltacat/server/db-config.js web_service_image_id`
 
-You can also forward ports 5000 and 8000/sessions (though I was not able to forward the latter).
+You can also forward ports 5000 and 8000/sessions (though [I was not able to forward the latter](https://github.com/process-project/lofar-lta-one-click-processing/issues/1#issue-406329872)).
 
 `docker ps` will show you the id of the container that is running the web service.
 
