@@ -16,7 +16,7 @@ After downloading ```oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm``` f
 
 This should take ten minutes or so.
 
-You can run the docker image, once you got the config.ini (not provided here for security reasons, but I will provide it upon request) and updated db-config.js with your [LOFAR credentials](https://lofar.astron.nl/useradministration/public/setUpUserAccount.do):
+You can run the docker image, once you got the config.ini (not provided here for security reasons, but I will provide it upon request) and updated db-config.js with your [LOFAR credentials](https://www.astron.nl/lofarwiki/doku.php?id=public:lta_howto):
 
 `docker run -d -p 2015:2015 -v $PWD/config.ini:/home/config/config.ini -v $PWD/db-config.js:/home/ltacat/server/db-config.js web_service_image_id`
 
