@@ -10,7 +10,7 @@ Clone the repository and make sure your Docker daemon is running.
 
 `cd lofar-lta-one-click-processing`
 
-After downloading ```oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm``` from [Oracle](https://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html) and adding it to the lofar-lta-one-click-processing folder, you can build the Docker image:
+After downloading ```oracle-instantclient18.3-basic-18.3.0.0.0-3.x86_64.rpm``` from [Oracle](https://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html) and adding it to the lofar-lta-one-click-processing folder, you can build the Docker image:
 
 `docker build --no-cache -t web_service_image_name .`
 

@@ -19,9 +19,9 @@ RUN pip3 install pipenv
 
 #the oracle db stuff
 #copy the  rpm file from host to container
-COPY oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm .
+COPY oracle-instantclient18.3-basic-18.3.0.0.0-3.x86_64.rpm .
 #install oracle db
-RUN alien -i oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm 
+RUN alien -i oracle-instantclient18.3-basic-18.3.0.0.0-3.x86_64.rpm 
 #set search path for  oracledb
 ENV LD_LIBRARY_PATH=/usr/lib/oracle/18.3/client64/lib/
 #set symlinks for shared objects of oracle stuff
