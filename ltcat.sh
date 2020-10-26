@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/ltacat
+cd /home/ltacat_UC2
 npm run start
