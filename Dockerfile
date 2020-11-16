@@ -66,11 +66,11 @@ WORKDIR /home/LOFAR_api
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 #clone lofar_api
-#RUN git clone https://github.com/process-project/UC2_workflow_api.git \
-#&& cd UC2_workflow_api && rm Pipfile.lock && pipenv --python /usr/bin/python3.6 install
+RUN git clone https://github.com/process-project/UC2_workflow_api.git \
+&& cd UC2_workflow_api && rm Pipfile.lock && pipenv --python /usr/bin/python3.6 install
 #SM: testing only
-ADD UC2_workflow_api /home/LOFAR_api/UC2_workflow_api
-RUN cd UC2_workflow_api && rm Pipfile.lock && pipenv --python /usr/bin/python3.6 install
+#ADD UC2_workflow_api /home/LOFAR_api/UC2_workflow_api
+#RUN cd UC2_workflow_api && rm Pipfile.lock && pipenv --python /usr/bin/python3.6 install
 # SM: copy user pipeline config files into the container
 COPY config_xe.json /home/LOFAR_api/
 COPY config_iee.json /home/LOFAR_api/
@@ -81,8 +81,8 @@ RUN cd /home/LOFAR_api/UC2_workflow_api && VENV="$(pipenv --venv)" \
 
 WORKDIR ..
 #download ltacat 
-#RUN git clone https://github.com/process-project/ltacat_UC2.git  
-ADD ltacat_UC2 /home/ltacat_UC2
+RUN git clone https://github.com/process-project/ltacat_UC2.git  
+#ADD ltacat_UC2 /home/ltacat_UC2
 WORKDIR ltacat_UC2/
 RUN  npm ci \
 &&   npm run webpack
