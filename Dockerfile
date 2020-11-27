@@ -1,7 +1,4 @@
-#FROM ubuntu:18.04
 FROM phusion/baseimage:0.11
-#FROM phusion/baseimage:bionic-1.0.0
-#FROM ubuntu:18.04
 
 #Install all necessary global packages
 
@@ -19,23 +16,10 @@ RUN apt-get update && apt-get install -y \
     alien \
     net-tools \
     default-jdk
-    
-#    alien \
-#&&  curl https://getcaddy.com | bash -s personal
 
 RUN pip3 install pipenv
 
-#SM install caddy: above command doesn't seem to work
-#RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" \
-#    | tee -a /etc/apt/sources.list.d/caddy-fury.list \
-#    && apt update \
-#    && apt install caddy
-
-
-#SM: above instructions install and start caddy which is not optimal
-#RUN curl -OL "https://github.com/caddyserver/caddy/releases/latest/download/#caddy_2.2.1_linux_amd64.tar.gz" && \
-#tar -C /usr/bin/ -xf caddy_2.2.1_linux_amd64.tar.gz caddy
-#SM: Don't seem to be able to download non latest versions
+# install and configure Caddy 2
 RUN curl -OL https://github.com/caddyserver/caddy/releases/download/v2.2.0/caddy_2.2.0_linux_amd64.tar.gz && \
 tar -C /usr/bin/ -xf caddy_2.2.0_linux_amd64.tar.gz caddy
 
@@ -59,7 +43,6 @@ ENV LD_LIBRARY_PATH=/usr/lib/oracle/19.8/client64/lib/
 #RUN  cd /usr/lib/oracle/19.8/client64/lib/ && ln -s libclntsh.so.19.8 libclntsh.so && ln -s libocci.so.19.8 libocci.so 
 
 #LOFAR_WORKFLOW_API
-
 #create working directory
 WORKDIR /home/LOFAR_api
 #set environment variables
@@ -68,21 +51,18 @@ ENV LANG=C.UTF-8
 #clone lofar_api
 RUN git clone https://github.com/process-project/UC2_workflow_api.git \
 && cd UC2_workflow_api && rm Pipfile.lock && pipenv --python /usr/bin/python3.6 install
-#SM: testing only
-#ADD UC2_workflow_api /home/LOFAR_api/UC2_workflow_api
-#RUN cd UC2_workflow_api && rm Pipfile.lock && pipenv --python /usr/bin/python3.6 install
-# SM: copy user pipeline config files into the container
+# copy user pipeline config files into the container, then to a virtual env for pipenv
 COPY config_xe.json /home/LOFAR_api/
 COPY config_iee.json /home/LOFAR_api/
 RUN cd /home/LOFAR_api/UC2_workflow_api && VENV="$(pipenv --venv)" \
 && cp /home/LOFAR_api/config_xe.json $VENV/lib/python3.6/site-packages/UC2_pipeline/data/config.json \
 && cp /home/LOFAR_api/config_iee.json $VENV/lib/python3.6/site-packages/LOFAR_IEE_pipeline/data/config.json
+
 #LTACAT
 
 WORKDIR ..
 #download ltacat 
-RUN git clone https://github.com/process-project/ltacat_UC2.git  
-#ADD ltacat_UC2 /home/ltacat_UC2
+RUN git clone https://github.com/process-project/ltacat_UC2.git 
 WORKDIR ltacat_UC2/
 RUN  npm ci \
 &&   npm run webpack
@@ -119,10 +99,10 @@ RUN chmod +x /etc/service/ltcat/run
 RUN mkdir -p /etc/service/caddy
 COPY caddy.sh /etc/service/caddy/run
 RUN chmod +x /etc/service/caddy/run
-#xenon-flow
-RUN mkdir -p /etc/service/xenonflow
-COPY xenonflow.sh /etc/service/xenonflow/run
-RUN chmod +x /etc/service/xenonflow/run
+# start xenon-flow at startup, uncomment if needed
+#RUN mkdir -p /etc/service/xenonflow
+#COPY xenonflow.sh /etc/service/xenonflow/run
+#RUN chmod +x /etc/service/xenonflow/run
 
 #expose ports 2015, 5000 and 8000
 EXPOSE 2015 5000 8000 8443
