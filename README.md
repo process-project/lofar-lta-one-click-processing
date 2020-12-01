@@ -1,5 +1,7 @@
 # Run UC2 (frontend) from a docker container 
 
+![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4157393.svg)](https://doi.org/10.5281/zenodo.4157393)
+
 Build and run the Docker image to set up a web service for one click processing of observations from the LOFAR LTA.
 So this web service is intended for demonstration purposes and not intended as production level code for PROCESS.
 
