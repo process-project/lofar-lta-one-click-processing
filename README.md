@@ -34,7 +34,7 @@ You can also do some logging:
 
 `docker logs -f container_id`
 
-Now you can view observations from the [LOFAR LTA](lta.lofar.eu) by entering
+Now you can view observations from the [LOFAR LTA](https://lta.lofar.eu) by entering
 ```localhost:2015```
 in your browser.
 
